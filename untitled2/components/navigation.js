@@ -12,7 +12,7 @@ const App = StackNavigator({
         First: {
             screen: Login,
             navigationOptions: {
-                header:null,
+                header:null
             },
         },
         Second: {
