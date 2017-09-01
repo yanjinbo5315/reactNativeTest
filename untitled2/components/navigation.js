@@ -1,10 +1,6 @@
 import React, {Component} from 'react';
 import {
-    StyleSheet,
-    Text,
     View,
-    TextInput,
-    TouchableOpacity
 } from 'react-native';
 import {
     StackNavigator
@@ -16,7 +12,7 @@ const App = StackNavigator({
         First: {
             screen: Login,
             navigationOptions: {
-                header:null
+                header:null,
             },
         },
         Second: {
