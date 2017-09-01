@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/react.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/react-dom.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/browser.min.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div id="contain"></div>
+<script type="text/babel">
+    var ListView=React.createClass({
+        render:function () {
+            return (
+                    <ul style={{listStyle:"none",margin:"0",padding:"0"}}>
+                        {
+                            React.Children.map(this.props.children,function (child) {
+                                return <li>{child}</li>
+                            })
+                        }
+                    </ul>
+            )
+        }
+    });
+    ReactDOM.render(
+        <ListView>
+            <h1>hello</h1>
+            <a href="http://www.baidu.com">hello</a>
+        </ListView>,
+        document.getElementById("contain")
+    );
+</script>
+</body>
+</html>
