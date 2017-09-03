@@ -20,14 +20,6 @@ export default class Main extends Component{
             </View>
         )
     }
-    _renderHeader=(txt)=>{
-        return (
-            <View key={txt.section.key} style={MainCss.header}>
-                <Text>{txt.section.key}</Text>
-            </View>
-        )
-    }
-
     _renderItem(item,i){
         return (
             <TouchableOpacity key={item.name} refs="touch" data-index={item.name}  style={MainCss.item} onPress={()=>console.log(item.name)}>
@@ -39,7 +31,13 @@ export default class Main extends Component{
             </TouchableOpacity>
         )
     }
-
+    _renderHeader=(txt)=>{
+        return (
+            <View key={txt.section.key} style={MainCss.header}>
+                <Text>{txt.section.key}</Text>
+            </View>
+        )
+    }
     render(){
         let pp=[{
             key:'J',
