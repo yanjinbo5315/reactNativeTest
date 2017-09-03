@@ -7,11 +7,9 @@ import {
     TouchableOpacity,
     SectionList
 } from 'react-native';
-export default class Main extends Component{
-    constructor(props){
-        super(props)
-    }
-    _renderItemView=({item})=>{
+
+export default class Main extends Component {
+    _renderItemView = ({item}) => {
         return (
             <View key={item.key} style={MainCss.itemView}>
                 {
@@ -20,9 +18,22 @@ export default class Main extends Component{
             </View>
         )
     }
-    _renderItem(item,i){
+    _renderHeader = (txt) => {
         return (
-            <TouchableOpacity key={item.name} refs="touch" data-index={item.name}  style={MainCss.item} onPress={()=>console.log(item.name)}>
+            <View key={txt.section.key} style={MainCss.header}>
+                <Text>{txt.section.key}</Text>
+            </View>
+        )
+    }
+
+    constructor(props) {
+        super(props)
+    }
+
+    _renderItem(item, i) {
+        return (
+            <TouchableOpacity key={item.name} refs="touch" data-index={item.name} style={MainCss.item}
+                              onPress={() => console.log(item.name)}>
                 <View style={MainCss.flexTxt}>
                     <Text>
                         {item.name}
@@ -31,83 +42,82 @@ export default class Main extends Component{
             </TouchableOpacity>
         )
     }
-    _renderHeader=(txt)=>{
-        return (
-            <View key={txt.section.key} style={MainCss.header}>
-                <Text>{txt.section.key}</Text>
-            </View>
-        )
+
+    _extraUniqueKey(item, index) {
+        return "index" + index + item;
     }
-    render(){
-        let pp=[{
-            key:'J',
-            data:[[{
-                name:'教育'
-            },{
-                name:'金融'
-            },{
-                name:'金牛'
+
+    render() {
+        let pp = [{
+            key: 'J',
+            data: [[{
+                name: '教育'
+            }, {
+                name: '金融'
+            }, {
+                name: '金牛'
             }]]
-        },{
-            key:'H',
-            data:[[{
-                name:'航天'
+        }, {
+            key: 'H',
+            data: [[{
+                name: '航天'
             }]]
-        },{
-            key:'Q',
-            data:[[{
-                name:'其他'
+        }, {
+            key: 'Q',
+            data: [[{
+                name: '其他'
             }]]
         }];
         return (
             <View style={MainCss.contain}>
                 <SectionList style={MainCss.sectionList}
-                    renderItem={this._renderItemView}
-                    renderSectionHeader={this._renderHeader}
-                    sections={pp}
+                             renderItem={this._renderItemView}
+                             renderSectionHeader={this._renderHeader}
+                             sections={pp}
+                             keyExtractor={this._extraUniqueKey}
                 />
             </View>
         )
     }
 }
-const MainCss=StyleSheet.create({
-   contain:{
-       flex:1,
-   },
-    flex:{
-       flex:1
+const MainCss = StyleSheet.create({
+    contain: {
+        flex: 1,
     },
-    flexTxt:{
-       flex:1,
-        justifyContent:"center",
-        alignItems:"center",
+    flex: {
+        flex: 1
     },
-    sectionList:{
-      flex:1,
-      // justifyContent:"center"
+    flexTxt: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
     },
-    itemView:{
-       flex:1,
-        height:80,
-        flexDirection:"row",
+    sectionList: {
+        flex: 1,
+        // justifyContent:"center"
     },
-    header:{
-       height:40,
-        width:"100%"
+    itemView: {
+        flex: 1,
+        height: 80,
+        flexDirection: "row",
     },
-    item:{
+    header: {
+        height: 40,
+        width: "100%"
+    },
+    item: {
 
-        width:"33.3%",
-        backgroundColor:"white",
+        width: "33.3%",
+        backgroundColor: "white",
         // border:1,
         // borderColor:"black"
-        borderTopWidth:1,
-        borderBottomWidth:1,
-        borderRightWidth:1,
-        borderLeftWidth:1,
-        borderTopColor:"#E0E0E0",
-        borderBottomColor:"#E0E0E0",
-        borderRightColor:"#E0E0E0",
-        borderLeftColor:"#E0E0E0"
+        borderTopWidth: 1,
+        borderBottomWidth: 1,
+        borderRightWidth: 1,
+        borderLeftWidth: 1,
+        borderTopColor: "#E0E0E0",
+        borderBottomColor: "#E0E0E0",
+        borderRightColor: "#E0E0E0",
+        borderLeftColor: "#E0E0E0"
     }
 });
