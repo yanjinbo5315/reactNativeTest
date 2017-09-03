@@ -86,7 +86,7 @@ export default class Login extends Component {
                     </View>
                     <View style={LoginCss.textView}>
                         <TextInput onChangeText={this.getPassWord.bind(this)} underlineColorAndroid="transparent"
-                                   style={LoginCss.textInput}/>
+                                   secureTextEntry={true}          style={LoginCss.textInput}/>
                     </View>
                     <View style={LoginCss.btnView}>
                         <TouchableOpacity style={LoginCss.btn} onPress={this.getLogin.bind(this)}>

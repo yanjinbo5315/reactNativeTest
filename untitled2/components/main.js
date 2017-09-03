@@ -7,7 +7,6 @@ import {
     TouchableOpacity,
     SectionList
 } from 'react-native';
-
 export default class Main extends Component {
     _renderItemView = ({item}) => {
         return (
@@ -32,8 +31,12 @@ export default class Main extends Component {
 
     _renderItem(item, i) {
         return (
-            <TouchableOpacity key={item.name} refs="touch" data-index={item.name} style={MainCss.item}
-                              onPress={() => console.log(item.name)}>
+            <TouchableOpacity
+                key={item.name}
+                refs="touch"
+                data-index={item.name}
+                style={MainCss.item}
+                onPress={() => this.props.navigation.navigate('List',{name:item.name})}>
                 <View style={MainCss.flexTxt}>
                     <Text>
                         {item.name}
@@ -94,7 +97,6 @@ const MainCss = StyleSheet.create({
     },
     sectionList: {
         flex: 1,
-        // justifyContent:"center"
     },
     itemView: {
         flex: 1,
@@ -109,8 +111,6 @@ const MainCss = StyleSheet.create({
 
         width: "33.3%",
         backgroundColor: "white",
-        // border:1,
-        // borderColor:"black"
         borderTopWidth: 1,
         borderBottomWidth: 1,
         borderRightWidth: 1,
