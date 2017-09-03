@@ -31,49 +31,48 @@ export default class Login extends Component {
     }
 
     getLogin() {
-        let userName = this.state.userName;
-        let passWord = this.state.passWord;
-        if (userName == "" || passWord == "") {
-            alert("请输入账号密码")
-        } else {
-            let md = forge.md.md5.create();
-            md.update(this.state.passWord);
-            let passWordMd5 = md.digest().toHex();
+        // let userName = this.state.userName;
+        // let passWord = this.state.passWord;
+        // if (userName == "" || passWord == "") {
+        //     alert("请输入账号密码")
+        // } else {
+        //     let md = forge.md.md5.create();
+        //     md.update(this.state.passWord);
+        //     let passWordMd5 = md.digest().toHex();
             // let data={
             //     code:'login',
             //     name:userName,
             //     password:passWordMd5
             // };
-            let formData = new FormData();
-            formData.append('code', 'login');
-            formData.append('name', userName);
-            formData.append('password', passWord);
-            // console.log(JSON.stringify(data));
-            let url = "http://10.192.111.78:8080/exam/exam";
-            let str = "?code=login&&" + "name=" + userName + "&&" + "password=" + passWord;
-            let header = new Headers();
-            header.append('Content-Type', 'application/json');
-            header.append('Accept', 'application/json');
-            fetch(url + str, {
-                header: header
-            })
-                .then( (response) => response.json())
-                .then( (responseData)=>{
-                    console.log(responseData)
-                    if(responseData.result){
-                        this.props.navigation.navigate('Second', {
-                            userInfo:responseData
-                        })
-                    }
-                    else{
-                        alert("账号密码错误");
-                    }
-                })
-                .catch( (error) =>console.log(error))
-                .done()
-        }
-
-
+            // let formData = new FormData();
+            // formData.append('code', 'login');
+            // formData.append('name', userName);
+            // formData.append('password', passWord);
+            // // console.log(JSON.stringify(data));
+            // let url = "http://10.192.111.78:8080/exam/exam";
+            // let str = "?code=login&&" + "name=" + userName + "&&" + "password=" + passWord;
+            // let header = new Headers();
+            // header.append('Content-Type', 'application/json');
+            // header.append('Accept', 'application/json');
+            // fetch(url + str, {
+            //     header: header
+            // })
+            //     .then( (response) => response.json())
+            //     .then( (responseData)=>{
+            //         console.log(responseData)
+            //         if(responseData.result){
+            //             this.props.navigation.navigate('Second', {
+            //                 userInfo:responseData
+            //             })
+            //         }
+            //         else{
+            //             alert("账号密码错误");
+            //         }
+            //     })
+            //     .catch( (error) =>console.log(error))
+            //     .done()
+        // }
+        this.props.navigation.navigate('Main',{});
     }
 
     render() {

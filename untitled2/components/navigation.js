@@ -9,13 +9,13 @@ import Main from "./main";
 import Login from "./login";
 
 const App = StackNavigator({
-        First: {
+        Login: {
             screen: Login,
             navigationOptions: {
                 header:null
             },
         },
-        Second: {
+        Main: {
             screen: Main,
             navigationOptions: {
                 headerTitle:"主页",
