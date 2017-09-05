@@ -8,6 +8,7 @@ import {
 import Main from "./main";
 import Login from "./login";
 import List from "./list";
+import Detail from "./detail";
 
 const App = StackNavigator({
         Login: {
@@ -26,6 +27,12 @@ const App = StackNavigator({
             screen: List,
             navigationOptions: {
                 headerTitle: "列表",
+            }
+        },
+        Detail: {
+            screen: Detail,
+            navigationOptions: {
+                headerTitle: "详细",
             }
         },
     }
