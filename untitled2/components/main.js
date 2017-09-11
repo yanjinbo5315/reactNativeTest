@@ -17,6 +17,9 @@ export default class Main extends Component {
             </View>
         )
     }
+    componentDidMount(){
+        console.log()
+    }
     _renderHeader = (txt) => {
         return (
             <View key={txt.section.key} style={MainCss.header}>

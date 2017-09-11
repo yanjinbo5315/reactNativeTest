@@ -11,7 +11,8 @@ import {
   Text,
   View
 } from 'react-native';
-import Navi from "./components/navigation";
+// import Navi from "./components/navigation";
 // import Login from "./components/login"
+import Store from "./App/store/store";
 
-AppRegistry.registerComponent('untitled2', () => Navi);
+AppRegistry.registerComponent('untitled2', () => Store);

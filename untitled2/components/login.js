@@ -7,9 +7,11 @@ import {
     TouchableOpacity
 } from 'react-native';
 import Main from "./main";
+import {loginIn_Name,loginIn_passWord} from "../App/actions/action";
+import {connect} from 'react-redux';
 import forge from "node-forge";
 
-export default class Login extends Component {
+class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -19,15 +21,17 @@ export default class Login extends Component {
     }
 
     getUserName(txt) {
-        this.setState({
-            userName: txt
-        })
+        // this.setState({
+        //     userName: txt
+        // })
+        this.props.dispatch(loginIn_Name(txt));
     }
 
     getPassWord(txt) {
-        this.setState({
-            passWord: txt
-        })
+        // this.setState({
+        //     passWord: txt
+        // })
+        this.props.dispatch(loginIn_passWord(txt));
     }
 
     getLogin() {
@@ -81,15 +85,15 @@ export default class Login extends Component {
                 <View style={LoginCss.flex}></View>
                 <View style={LoginCss.flex1}>
                     <View style={LoginCss.textView}>
-                        <TextInput onChangeText={this.getUserName.bind(this)} underlineColorAndroid="transparent"
+                        <TextInput onChangeText={(txt)=>{this.props.dispatch(loginIn_Name(txt))}} underlineColorAndroid="transparent"
                                    style={LoginCss.textInput}/>
                     </View>
                     <View style={LoginCss.textView}>
-                        <TextInput onChangeText={this.getPassWord.bind(this)} underlineColorAndroid="transparent"
+                        <TextInput onChangeText={(txt)=>{this.props.dispatch(loginIn_passWord(txt))}} underlineColorAndroid="transparent"
                                    secureTextEntry={true}          style={LoginCss.textInput}/>
                     </View>
                     <View style={LoginCss.btnView}>
-                        <TouchableOpacity style={LoginCss.btn} onPress={this.getLogin.bind(this)}>
+                        <TouchableOpacity style={LoginCss.btn} onPress={()=>{console.log(this.props.name)}}>
                             <Text style={LoginCss.btnTxt}>登录</Text>
                         </TouchableOpacity>
                     </View>
@@ -100,7 +104,14 @@ export default class Login extends Component {
 
     }
 }
-;
+function select(store) {
+    let {name}=store;
+    let {passWord}=store;
+    return {
+        name,
+        passWord
+    }
+}
 const LoginCss = StyleSheet.create({
     flex: {
         flex: 1
@@ -144,3 +155,4 @@ const LoginCss = StyleSheet.create({
         marginTop: 15
     }
 });
+export  default connect(select)(Login);
