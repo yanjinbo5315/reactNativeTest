@@ -7,7 +7,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 import Main from "./main";
-import {loginIn_Name,loginIn_passWord} from "../App/actions/action";
+import {loginIn_Name,loginIn_passWord} from "./../actions/action";
 import {connect} from 'react-redux';
 import forge from "node-forge";
 
@@ -90,10 +90,11 @@ class Login extends Component {
                     </View>
                     <View style={LoginCss.textView}>
                         <TextInput onChangeText={(txt)=>{this.props.dispatch(loginIn_passWord(txt))}} underlineColorAndroid="transparent"
-                                   secureTextEntry={true}          style={LoginCss.textInput}/>
+                                   secureTextEntry={true}
+                                   style={LoginCss.textInput}/>
                     </View>
                     <View style={LoginCss.btnView}>
-                        <TouchableOpacity style={LoginCss.btn} onPress={()=>{console.log(this.props.name)}}>
+                        <TouchableOpacity style={LoginCss.btn} onPress={()=>{console.log(this.props.name+","+this.props.passWord)}}>
                             <Text style={LoginCss.btnTxt}>登录</Text>
                         </TouchableOpacity>
                     </View>

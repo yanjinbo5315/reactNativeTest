@@ -3310,7 +3310,7 @@ react-devtools-core@2.3.1:
 
 react-native-cli@^2.0.1:
   version "2.0.1"
-  resolved "http://registry.npm.taobao.org/react-native-cli/download/react-native-cli-2.0.1.tgz#f2cd3c7aa1b83828cdfba630e2dfd817df766d54"
+  resolved "http://r.cnpmjs.org/react-native-cli/download/react-native-cli-2.0.1.tgz#f2cd3c7aa1b83828cdfba630e2dfd817df766d54"
   dependencies:
     chalk "^1.1.1"
     minimist "^1.2.0"

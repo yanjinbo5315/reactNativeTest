@@ -12,6 +12,6 @@ import {
   View
 } from 'react-native';
 
-import Navi from "./components/navigation";
+import Navi from "./App/components/navigation";
 
 AppRegistry.registerComponent('untitled2', () => Navi);

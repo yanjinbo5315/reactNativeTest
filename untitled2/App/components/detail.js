@@ -15,7 +15,7 @@ export default class Detail extends Component {
         return (
             <View style={DetailCss.contain}>
                 <View style={DetailCss.imgView}>
-                    <Image resizeMode="stretch"  style={DetailCss.flex} source={require("./IMG/Chrysanthemum.jpg")} />
+                    <Image resizeMode="stretch"  style={DetailCss.flex} source={require("../../components/IMG/Chrysanthemum.jpg")} />
                 </View>
                 <View>
                     <Text></Text>

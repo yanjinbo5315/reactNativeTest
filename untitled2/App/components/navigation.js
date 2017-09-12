@@ -5,8 +5,8 @@ import {
 import {
     StackNavigator
 } from 'react-navigation';
-import Main from "./main";
-import Login from "./login";
+import Main from "./../pages/main";
+import Login from "./../pages/login";
 import List from "./list";
 import Detail from "./detail";
 
