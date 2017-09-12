@@ -11,6 +11,7 @@ function GetLogin(state=initState,action) {
             return Object.assign({},state,{
                name:action.name,
             });
+
         case Login_In_passWord:
             console.log("解析密码动作");
             return Object.assign({},state,{

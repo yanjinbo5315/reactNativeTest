@@ -155,4 +155,4 @@ const LoginCss = StyleSheet.create({
         marginTop: 15
     }
 });
-export  default connect(select)(Login);
+export default connect(select)(Login);
