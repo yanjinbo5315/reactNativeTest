@@ -5,12 +5,12 @@ import {
     View,
     FlatList
 } from 'react-native';
-
+import ListItemWithPic from "./listItemWithPic";
 export default class FlatList extends Component {
     constructor(props) {
         super(props)
     }
-    _renderItem = ({item}, i) => {
+    _renderItem = ({item}) => {
         return (
             <TouchableOpacity
                 onPress={() => this.props.navigation.navigate("Detail", {data: item.id})}

@@ -9,6 +9,7 @@ import {
 import Main from "./main";
 import {loginIn_Name,loginIn_passWord} from "./../actions/action";
 import {connect} from 'react-redux';
+import Button from "./../components/button";
 import forge from "node-forge";
 
 class Login extends Component {
@@ -94,9 +95,14 @@ class Login extends Component {
                                    style={LoginCss.textInput}/>
                     </View>
                     <View style={LoginCss.btnView}>
-                        <TouchableOpacity style={LoginCss.btn} onPress={()=>{console.log(this.props.name+","+this.props.passWord)}}>
-                            <Text style={LoginCss.btnTxt}>登录</Text>
-                        </TouchableOpacity>
+                        {/*<TouchableOpacity style={LoginCss.btn} onPress={()=>{console.log(this.props.name+","+this.props.passWord)}}>*/}
+                            {/*<Text style={LoginCss.btnTxt}>登录</Text>*/}
+                        {/*</TouchableOpacity>*/}
+                        <Button
+                            txt="登录"
+                            onPress={()=>{this.props.navigation.navigate('Main',{})}}
+                            containerStyle={LoginCss.btn}
+                            txtStyle={LoginCss.btnTxt}/>
                     </View>
                 </View>
                 <View style={LoginCss.flex}></View>

@@ -1,7 +1,7 @@
 import { createStore } from "redux";
 import GetLogin from "./../reducers/getLogin";
 import { Provider } from "react-redux";
-import Navi from "./../components/navigation";
+import Navi from "./../container/navigation";
 import React, { Component } from 'react';
 const store =createStore(GetLogin);
 export default class  Store extends React.PureComponent{

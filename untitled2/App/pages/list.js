@@ -9,7 +9,8 @@ import {
     FlatList,
     ActivityIndicator
 } from 'react-native';
-import Actvity from './actvity';
+import Actvity from '../components/actvity';
+import ListItemWithPic from "./../components/listItemWithPic"
 // var pp = [{
 //     img: "",
 //     txt: "1"
@@ -95,40 +96,19 @@ export default class List extends Component {
         })
     }
 
-    _renderItem = ({item}, i) => {
+    _renderItem = ({item},i) => {
         return (
-            <TouchableOpacity onPress={() => {
-
-                // let ee = [];
-                // let pp=this.state.data;
-                // for (let i = 0; i < pp.length; i++) {
-                //     if (pp[i].id == item.id) {
-                //         ee.push(pp[i]);
-                //     }
-                // }
-                this.props.navigation.navigate("Detail", {data: item.id});
-            }
-            } style={ListCss.flex}>
-                <View style={ListCss.listItem}>
-                    <View style={ListCss.listImg}>
-                        <Image source={{uri: 'http://facebook.github.io/react/img/logo_og.png'}} style={{flex: 1}}/>
-                    </View>
-                    <View style={ListCss.listTxt}>
-                        <View style={[ListCss.flex,ListCss.listTxt_Frist]}>
-                            <Text style={{fontSize:16}}>{item.name}</Text>
-                        </View>
-                        <View style={[ListCss.flex,ListCss.margin_left]}>
-                            <Text style={{fontSize:14}}>{item.content}</Text>
-                        </View>
-                        <View style={[ListCss.flex,ListCss.margin_left]}>
-                            <Text style={{fontSize:14}}>成都市</Text>
-                        </View>
-                        <View style={[ListCss.flex,ListCss.listTxt_Last,ListCss.margin_left]}>
-                            <Text style={{fontSize:14,color:"red",textAlign:"right",marginRight:5}}>¥{item.price}</Text>
-                        </View>
-                    </View>
-                </View>
-            </TouchableOpacity>
+            <ListItemWithPic
+                onPress={() => this.props.navigation.navigate("Detail", {data: item.id})}
+                containerStyle={ListCss.container}
+                imgContainerStyle={ListCss.listImg}
+                containerViewStyle={ListCss.listItem}
+                imgSource={{uri: 'http://facebook.github.io/react/img/logo_og.png'}}
+                txtContainerStyle={ListCss.listTxt}
+                viewNum="3"
+                viewStyle={[ListCss.listTxt_Frist,ListCss.listTxt_middle,ListCss.listTxt_Last]}
+                viewItem={[item.name,item.content,"成都",item.price]}
+            />
         )
     };
     _keyExtractor = (item, index) => index;
@@ -182,6 +162,12 @@ const ListCss = StyleSheet.create({
     flex: {
         flex: 1
     },
+    container:{
+        height:100,
+        width:"100%",
+        borderBottomWidth:1,
+        borderBottomColor:"#666666"
+    },
     textInput: {
         height: 50,
         width: "90%",
@@ -195,8 +181,7 @@ const ListCss = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
-        height: 80,
-        width: "100%",
+        flex:1,
         backgroundColor: "white",
         borderBottomWidth: 1,
         borderBottomColor: "#999999"
@@ -215,8 +200,16 @@ const ListCss = StyleSheet.create({
     listTxt_Frist:{
       marginTop:3,
       marginLeft:5,
+      flex:1,
+    },
+    listTxt_middle:{
+        flex:1,
+        marginTop:3,
+        marginLeft:5,
     },
     listTxt_Last:{
-        justifyContent:"flex-end",
+        flex:1,
+        marginTop:3,
+        marginLeft:5,
     }
 });

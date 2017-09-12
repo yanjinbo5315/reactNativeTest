@@ -7,8 +7,8 @@ import {
 } from 'react-navigation';
 import Main from "./../pages/main";
 import Login from "./../pages/login";
-import List from "./list";
-import Detail from "./detail";
+import List from "./../pages/list";
+import Detail from "./../components/detail";
 
 const App = StackNavigator({
         Login: {
