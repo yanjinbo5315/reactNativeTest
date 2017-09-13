@@ -8,6 +8,9 @@ import {
     SectionList
 } from 'react-native';
 export default class Main extends Component {
+    constructor(props) {
+        super(props)
+    }
     _renderItemView = ({item}) => {
         return (
             <View key={item.key} style={MainCss.itemView}>
@@ -28,10 +31,25 @@ export default class Main extends Component {
         )
     }
 
-    constructor(props) {
-        super(props)
+    _onClick(name){
+        switch (name){
+            case "列表":
+                this.props.navigation.navigate('List',{name:name});
+                break;
+            case "选项":
+                this.props.navigation.navigate('Select',{name:name});
+                break;
+            case "金牛":
+                alert("你点击的是金牛");
+                break;
+            case "航天":
+                alert("你点击的是航天");
+                break;
+            case "其他":
+                alert("你点击的是其他");
+                break;
+        }
     }
-
     _renderItem(item, i) {
         return (
             <TouchableOpacity
@@ -39,7 +57,9 @@ export default class Main extends Component {
                 refs="touch"
                 data-index={item.name}
                 style={MainCss.item}
-                onPress={() => this.props.navigation.navigate('List',{name:item.name})}>
+                // onPress={() => }
+                onPress={()=>this._onClick(item.name)}
+            >
                 <View style={MainCss.flexTxt}>
                     <Text>
                         {item.name}
@@ -57,9 +77,9 @@ export default class Main extends Component {
         let pp = [{
             key: 'J',
             data: [[{
-                name: '教育'
+                name: '列表'
             }, {
-                name: '金融'
+                name: '选项'
             }, {
                 name: '金牛'
             }]]

@@ -9,7 +9,7 @@ import Main from "./../pages/main";
 import Login from "./../pages/login";
 import List from "./../pages/list";
 import Detail from "./../components/detail";
-
+import Select from "./../pages/select"
 const App = StackNavigator({
         Login: {
             screen: Login,
@@ -35,6 +35,12 @@ const App = StackNavigator({
                 headerTitle: "详细",
             }
         },
+    Select: {
+        screen: Select,
+        navigationOptions: {
+            headerTitle: "选项",
+        }
+    },
     }
 );
 export default class Navi extends Component {

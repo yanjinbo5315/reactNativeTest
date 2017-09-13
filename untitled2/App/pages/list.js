@@ -198,7 +198,7 @@ const ListCss = StyleSheet.create({
       marginLeft:5
     },
     listTxt_Frist:{
-      marginTop:3,
+      marginTop:5,
       marginLeft:5,
       flex:1,
     },
