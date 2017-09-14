@@ -1,12 +1,12 @@
-import React, { PropTypes ,Component} from 'react';
+import React, {Component} from 'react';
 import { ViewPropTypes, Text, TouchableOpacity } from 'react-native';
 
-const propTypes = {
-    onPress: PropTypes.func,
-    txtStyle: Text.propTypes.style,
-    containerStyle: ViewPropTypes.style,
-    txt: PropTypes.string,
-};
+// const propTypes = {
+//     onPress: PropTypes.func,
+//     txtStyle: Text.propTypes.style,
+//     containerStyle: ViewPropTypes.style,
+//     txt: PropTypes.string,
+// };
 export default class Button extends Component{
     constructor(props){
         super(props)
