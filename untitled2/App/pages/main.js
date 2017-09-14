@@ -12,6 +12,7 @@ export default class Main extends Component {
         super(props)
     }
     _renderItemView = ({item}) => {
+        console.log(item);
         return (
             <View key={item.key} style={MainCss.itemView}>
                 {

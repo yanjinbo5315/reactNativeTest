@@ -34,50 +34,35 @@ export default class GridList extends Component {
         console.log(itemsGroup);
         return itemsGroup;
     }
-
-    // renderItem(item){
-    //     return (
-    //         <View style={SelectCss.contain}>
-    //             <Button
-    //                 containerStyle={SelectCss.buttonContainer}
-    //                 txtStyle={SelectCss.buttonText}
-    //                 onPress={()=>{alert("点击了"+item)}}
-    //                 txt={item}
-    //             />
-    //         </View>
-    //     )
-    // }
-    // _renderItem(itemsGroup) {
-    //     // const renderItem = this.renderItem;//获取要渲染的组件
-    //     // const itemViews = itemsGroup.map((item) => {
-    //     //     const i = renderItem(item);
-    //     //     return i;
-    //     // });
-    //     return (
-    //         <View style={{flex:1,flexDirection:"row"}}>
-    //             {/*{itemViews}*/}
-    //         </View>
-    //     );
-    // }
+    _keyExtractor = (item, index) => index;
     _renderItemView = (items) => {
-        console.log(items);
+        const {perRowNum} = this.props; //每行列数
+        const {dataContent} = this.props;//要展示的数据
         const {renderItem} = this.props;
-        const pp=[];
-        items.map((item)=>{
-           pp.push(renderItem(item));
+        let pp=[];
+        items.item.map((item,i)=>{
+           pp.push(renderItem(item.name,i));
         });
+        if(items.item.length===perRowNum){}
+        else{
+            let num=perRowNum-items.item.length;
+            console.log(num);
+            for(let i=0;i<num;i++){
+                const tt=(
+                    <View key={dataContent.length+i} style={GridListCss.contain} />
+                );
+                pp.push(tt);
+            }
+        }
+        console.log(pp);
         return (
             <View style={GridListCss.listRow}>
-                // items.map((item) =>renderItem(item))
                 {pp}
             </View>
         )
     };
 
     render() {
-        // const ds = new ListView.DataSource({
-        //     rowHasChanged: (r1, r2) => r1 !== r2
-        // });
         const {perRowNum} = this.props; //每行列数
         const {dataContent} = this.props;//要展示的数据
         const rebuild = this._rebuild(perRowNum, dataContent);
@@ -87,6 +72,7 @@ export default class GridList extends Component {
                     data={rebuild}
                     renderItem={this._renderItemView}
                     style={this.props.style}
+                    keyExtractor={this._keyExtractor}
                 />
             </View>
         )

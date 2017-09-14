@@ -7,7 +7,21 @@ import {
 } from 'react-native';
 import Button from "./../components/button";
 
-const tt = ["1", "2", "3", "4", "5", "6", "7", "8"];
+const tt = [{
+    name:"1"
+},{
+    name:"2"
+},{
+    name:"3"
+},{
+    name:"4"
+},{
+    name:"5"
+},{
+    name:"6"
+},{
+    name:"7"
+},];
 import GridList from "./../components/gridList";
 
 export default class Select extends Component {
@@ -15,9 +29,9 @@ export default class Select extends Component {
         super(props)
     }
 
-    _renderItem(item) {
+    _renderItem(item,i) {
         return (
-            <View style={SelectCss.contain}>
+            <View key={i} style={SelectCss.contain}>
                 <Button
                     containerStyle={SelectCss.buttonContainer}
                     txtStyle={SelectCss.buttonText}
@@ -31,21 +45,6 @@ export default class Select extends Component {
     }
 
     render() {
-        // let pp=[];
-        // tt.map((item,i)=>{
-        //     let qq=(
-        //         <View key={i} style={SelectCss.buttonView}>
-        //             <Button
-        //                 containerStyle={SelectCss.buttonContainer}
-        //                 txtStyle={SelectCss.buttonText}
-        //                 onPress={()=>{alert("点击了"+item)}}
-        //                 txt={item}
-        //             />
-        //         </View>
-        //     );
-        //     pp.push(qq);
-        // });
-        // console.log(pp);
         return (
             <View style={SelectCss.contain}>
                 <GridList
@@ -63,21 +62,19 @@ const SelectCss = StyleSheet.create({
         flex: 1,
     },
     ListView: {
-        width: "80%",
-        height: "90%",
+        flex:1,
         // alignItems:"center",
         // justifyContent:"center"
     },
     buttonView: {
-        width: "100%",
+        width: 100,
         height: 80,
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: "white"
     },
     buttonContainer: {
-        width: "80%",
-        height: "40%",
+        flex:1,
         justifyContent: "center",
         alignItems: "center",
         borderRadius: 10,
