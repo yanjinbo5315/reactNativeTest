@@ -6,7 +6,7 @@ import {
     ScrollView
 } from 'react-native';
 import Button from "./../components/button";
-
+import {connect} from 'react-redux';
 const tt = [{
     name:"1"
 },{
@@ -23,20 +23,24 @@ const tt = [{
     name:"7"
 },];
 import GridList from "./../components/gridList";
-
-export default class Select extends Component {
+let checkBox=[];
+class Select extends Component {
     constructor(props) {
-        super(props)
+        super(props);
+        this.state={
+            checked:checkBox,
+        }
     }
 
     _renderItem(item,i) {
+
         return (
             <View key={i} style={SelectCss.contain}>
                 <Button
                     containerStyle={SelectCss.buttonContainer}
                     txtStyle={SelectCss.buttonText}
                     onPress={() => {
-                        alert("点击了" + item)
+
                     }}
                     txt={item}
                 />
@@ -45,6 +49,8 @@ export default class Select extends Component {
     }
 
     render() {
+        const {check_GridList}=this.props;
+        console.log(check_GridList);
         return (
             <View style={SelectCss.contain}>
                 <GridList
@@ -52,10 +58,18 @@ export default class Select extends Component {
                     dataContent={tt}
                     perRowNum={3}
                     style={SelectCss.ListView}
+                    {...this.props}
                 />
             </View>
         )
     }
+}
+function select(store) {
+    console.log(store);
+    const {check_GridList}=store.CheckGridList;
+    return{
+        check_GridList:check_GridList
+    };
 }
 const SelectCss = StyleSheet.create({
     contain: {
@@ -82,6 +96,21 @@ const SelectCss = StyleSheet.create({
         borderColor: "#E0E0E0"
     },
     buttonText: {
-        fontSize: 14
-    }
+        fontSize: 14,
+        color:"#333333"
+    },
+    buttonContainer_check: {
+        flex:1,
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 10,
+        backgroundColor:"blue",
+        borderWidth: 1,
+        borderColor: "#E0E0E0"
+    },
+    buttonText_check: {
+        fontSize: 14,
+        color:"white"
+    },
 });
+export default connect(select)(Select);

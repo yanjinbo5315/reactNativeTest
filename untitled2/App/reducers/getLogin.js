@@ -1,6 +1,5 @@
-import { combineReducers } from 'redux';
 import {Login_In_Name,Login_In_passWord} from "./../actions/action";
-let initState={
+const initState={
     name:"",
     passWord:""
 };
@@ -13,7 +12,6 @@ export default function GetLogin(state=initState,action) {
                 ...state,
                 name:action.name
             };
-
         case Login_In_passWord:
             console.log("解析密码动作");
             return {
@@ -21,10 +19,7 @@ export default function GetLogin(state=initState,action) {
                 passWord:action.passWord
             };
         default:
+            console.log("default");
             return state;
     }
 }
-// const rootReducer=combineReducers({
-//     GetLogin,
-// });
-// export default rootReducer;

@@ -46,7 +46,6 @@ export default class GridList extends Component {
         if(items.item.length===perRowNum){}
         else{
             let num=perRowNum-items.item.length;
-            console.log(num);
             for(let i=0;i<num;i++){
                 const tt=(
                     <View key={dataContent.length+i} style={GridListCss.contain} />
@@ -54,7 +53,6 @@ export default class GridList extends Component {
                 pp.push(tt);
             }
         }
-        console.log(pp);
         return (
             <View style={GridListCss.listRow}>
                 {pp}

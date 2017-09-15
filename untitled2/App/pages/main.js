@@ -7,7 +7,8 @@ import {
     TouchableOpacity,
     SectionList
 } from 'react-native';
-export default class Main extends Component {
+import {connect} from 'react-redux';
+class Main extends Component {
     constructor(props) {
         super(props)
     }
@@ -95,6 +96,8 @@ export default class Main extends Component {
                 name: '其他'
             }]]
         }];
+        const {name}=this.props;
+        console.log(name);
         return (
             <View style={MainCss.contain}>
                 <SectionList style={MainCss.sectionList}
@@ -106,6 +109,12 @@ export default class Main extends Component {
             </View>
         )
     }
+}
+function select(store) {
+    const {name}=store.GetLogin;
+    return {
+        name:name
+    };
 }
 const MainCss = StyleSheet.create({
     contain: {
@@ -145,3 +154,4 @@ const MainCss = StyleSheet.create({
         borderLeftColor: "#E0E0E0"
     }
 });
+export default connect(select)(Main);
