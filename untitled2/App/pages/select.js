@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 import {
     StyleSheet,
-    Text,
     View,
-    ScrollView
 } from 'react-native';
 import Button from "./../components/button";
 import {connect} from 'react-redux';
+import {check_GridList} from "./../actions/action";
 const tt = [{
     name:"1"
 },{
@@ -23,34 +22,50 @@ const tt = [{
     name:"7"
 },];
 import GridList from "./../components/gridList";
-let checkBox=[];
 class Select extends Component {
     constructor(props) {
         super(props);
+        const {check_GridListItem}=this.props;
         this.state={
-            checked:checkBox,
+            checked:check_GridListItem,
         }
     }
-
-    _renderItem(item,i) {
-
+    _onClick=(item)=>{
+        const {check_GridListItem}=this.props;
+        const {dispatch}=this.props;
+        if(check_GridListItem.indexOf(item)>-1){
+            for(let i=0;i<check_GridListItem.length;i++){
+               if(check_GridListItem[i]==item){
+                   check_GridListItem.splice(i,1);
+                   break;
+               }
+            }
+        }else{
+            check_GridListItem.push(item);
+        }
+        this.setState({
+            checked:check_GridListItem
+        });
+        dispatch(check_GridList(check_GridListItem));
+    };
+    _renderItem=(item,i)=>{
+        const onOroff=this.state.checked.indexOf(item)>-1?"1":"0";
         return (
             <View key={i} style={SelectCss.contain}>
                 <Button
-                    containerStyle={SelectCss.buttonContainer}
-                    txtStyle={SelectCss.buttonText}
-                    onPress={() => {
-
-                    }}
+                    containerStyle={onOroff=="0"?SelectCss.buttonContainer:SelectCss.buttonContainer_check}
+                    txtStyle={onOroff=="0"?SelectCss.buttonText:SelectCss.buttonText_check}
+                    onPress={()=>this._onClick(item)}
                     txt={item}
                 />
             </View>
         )
     }
-
-    render() {
+    componentDidMount(){
         const {check_GridList}=this.props;
         console.log(check_GridList);
+    }
+    render() {
         return (
             <View style={SelectCss.contain}>
                 <GridList
@@ -58,7 +73,6 @@ class Select extends Component {
                     dataContent={tt}
                     perRowNum={3}
                     style={SelectCss.ListView}
-                    {...this.props}
                 />
             </View>
         )
@@ -68,7 +82,7 @@ function select(store) {
     console.log(store);
     const {check_GridList}=store.CheckGridList;
     return{
-        check_GridList:check_GridList
+        check_GridListItem:check_GridList
     };
 }
 const SelectCss = StyleSheet.create({

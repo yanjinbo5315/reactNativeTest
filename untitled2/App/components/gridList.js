@@ -31,7 +31,6 @@ export default class GridList extends Component {
         }
         else {
         }
-        console.log(itemsGroup);
         return itemsGroup;
     }
     _keyExtractor = (item, index) => index;

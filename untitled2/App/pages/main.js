@@ -59,7 +59,6 @@ class Main extends Component {
                 refs="touch"
                 data-index={item.name}
                 style={MainCss.item}
-                // onPress={() => }
                 onPress={()=>this._onClick(item.name)}
             >
                 <View style={MainCss.flexTxt}>
@@ -70,7 +69,6 @@ class Main extends Component {
             </TouchableOpacity>
         )
     }
-
     _extraUniqueKey(item, index) {
         return "index" + index + item;
     }
@@ -111,9 +109,11 @@ class Main extends Component {
     }
 }
 function select(store) {
+    const {check_GridList}=store.CheckGridList;
     const {name}=store.GetLogin;
-    return {
-        name:name
+    return{
+        check_GridList:check_GridList,
+        userName:name
     };
 }
 const MainCss = StyleSheet.create({

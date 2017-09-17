@@ -5,7 +5,6 @@ import Navi from "./../container/navigation";
 import rootReducer from "./../reducers/index"
 import React, { Component } from 'react';
 const store =createStore(rootReducer);
-console.log(store.getState());
 export default class  Store extends React.PureComponent{
     constructor(props){
         super(props);
