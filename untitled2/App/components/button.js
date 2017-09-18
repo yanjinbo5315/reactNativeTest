@@ -1,18 +1,17 @@
 import React, {Component} from 'react';
 import { ViewPropTypes, Text, TouchableOpacity } from 'react-native';
-
-// const propTypes = {
-//     onPress: PropTypes.func,
-//     txtStyle: Text.propTypes.style,
-//     containerStyle: ViewPropTypes.style,
-//     txt: PropTypes.string,
-// };
+import {PropTypes} from 'prop-types';
+const propTypes={
+    onPress:PropTypes.func,
+    txt:PropTypes.string,
+    txtStyle: Text.propTypes.style,
+    containerStyle: ViewPropTypes.style,
+};
 export default class Button extends Component{
     constructor(props){
         super(props);
 
     }
-
     render(){
         return (
             <TouchableOpacity style={this.props.containerStyle} onPress={this.props.onPress}>
@@ -21,3 +20,4 @@ export default class Button extends Component{
         )
     }
 }
+Button.propTypes=propTypes;

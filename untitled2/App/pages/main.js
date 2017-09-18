@@ -41,8 +41,8 @@ class Main extends Component {
             case "选项":
                 this.props.navigation.navigate('Select',{name:name});
                 break;
-            case "金牛":
-                alert("你点击的是金牛");
+            case "Tab":
+                this.props.navigation.navigate('Tab',{name:name});
                 break;
             case "航天":
                 alert("你点击的是航天");
@@ -81,7 +81,7 @@ class Main extends Component {
             }, {
                 name: '选项'
             }, {
-                name: '金牛'
+                name: 'Tab'
             }]]
         }, {
             key: 'H',

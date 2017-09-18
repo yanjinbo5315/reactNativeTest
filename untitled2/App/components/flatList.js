@@ -5,7 +5,14 @@ import {
     View,
     FlatList
 } from 'react-native';
+import {PropTypes} from 'prop-types';
 import ListItemWithPic from "./listItemWithPic";
+// const propTypes={
+//     onPress:PropTypes.func,
+//     txt:PropTypes.string,
+//     txtStyle: Text.propTypes.style,
+//     containerStyle: ViewPropTypes.style,
+// };
 export default class FlatList extends Component {
     constructor(props) {
         super(props)

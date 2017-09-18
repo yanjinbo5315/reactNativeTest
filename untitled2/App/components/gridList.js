@@ -1,13 +1,17 @@
 import React, {Component} from 'react';
 import {
     StyleSheet,
-    Text,
     View,
-    ListView,
-    SectionList,
+    Text,
     FlatList
 } from 'react-native';
-
+import {PropTypes} from 'prop-types';
+const propTypes={
+    perRowNum:PropTypes.number,
+    dataContent:PropTypes.array,
+    renderItem: PropTypes.func,
+    style: PropTypes.style,
+};
 export default class GridList extends Component {
     constructor(props) {
         super(props);
@@ -85,3 +89,4 @@ const GridListCss = StyleSheet.create({
         flexDirection: "row",
     }
 });
+GridList.propTypes=propTypes;

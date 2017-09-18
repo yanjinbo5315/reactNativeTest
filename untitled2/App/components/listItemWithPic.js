@@ -5,7 +5,18 @@ import {
     Image,
     Text
 } from 'react-native';
-
+import {PropTypes} from 'prop-types';
+const propTypes={
+    viewNum:PropTypes.number,
+    viewStyle:PropTypes.object,
+    viewItem: PropTypes.object,
+    onPress: PropTypes.func,
+    containerStyle:PropTypes.object,
+    containerViewStyle:PropTypes.object,
+    imgContainerStyle:PropTypes.object,
+    imgSource:PropTypes.string,
+    txtContainerStyle:PropTypes.string,
+};
 export default class ListItemWithPic extends Component {
     constructor(props) {
         super(props)
@@ -41,3 +52,4 @@ export default class ListItemWithPic extends Component {
         )
     }
 }
+ListItemWithPic.propTypes=propTypes;
