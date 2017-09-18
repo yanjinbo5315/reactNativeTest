@@ -10,7 +10,7 @@ const propTypes={
     perRowNum:PropTypes.number,
     dataContent:PropTypes.array,
     renderItem: PropTypes.func,
-    style: PropTypes.style,
+    // style: PropTypes.style,
 };
 export default class GridList extends Component {
     constructor(props) {
