@@ -5,7 +5,7 @@ import {
     View,
 } from 'react-native';
 import Tab2 from "./../pages/tab2";
-export default class Main extends Component {
+export default class TabContainer2 extends Component {
     constructor(props) {
         super(props)
     }
@@ -14,13 +14,13 @@ export default class Main extends Component {
     });
     render() {
         return (
-            <View style={MainCss.contain}>
+            <View style={TabContainer2Css.contain}>
                 <Tab2/>
             </View>
         )
     }
 }
-const MainCss = StyleSheet.create({
+const TabContainer2Css = StyleSheet.create({
     contain: {
         flex: 1,
     },

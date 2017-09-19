@@ -5,6 +5,7 @@ import {
     View,
 } from 'react-native';
 import Tab1 from "./../pages/tab1";
+
 export default class TabContainer1 extends Component {
     constructor(props) {
         super(props)

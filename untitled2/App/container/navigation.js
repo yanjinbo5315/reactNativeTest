@@ -10,7 +10,7 @@ import Main from "./../pages/main";
 import Login from "./../pages/login";
 import List from "./../pages/list";
 import Detail from "./../components/detail";
-import Select from "./../pages/select"
+import Select from "./../pages/select";
 import TabContainer1 from "./tabContainer1";
 import TabContainer2 from "./tabContainer2";
 const TabContainer = TabNavigator({
